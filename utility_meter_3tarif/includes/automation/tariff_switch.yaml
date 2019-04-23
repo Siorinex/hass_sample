@@ -1,0 +1,51 @@
+- alias: 00_power_conter_tarif_peak
+  initial_state: true
+  trigger:
+  - platform: time
+    at: '07:00:00'
+  - platform: time
+    at: '17:00:00'
+  action:
+    - service: utility_meter.select_tariff
+      data: 
+        entity_id: 
+          - utility_meter.power_cooler_h
+          - utility_meter.power_cooler_d
+          - utility_meter.power_cooler_w
+          - utility_meter.power_cooler_m
+        tariff: peak
+  
+- alias: 00_power_conter_tarif_halfepeak
+  initial_state: true
+  trigger:
+  - platform: time
+    at: '10:00:00'
+  - platform: time
+    at: '21:00:00'
+  action:
+    - service: utility_meter.select_tariff
+      data: 
+        entity_id: 
+          - utility_meter.power_cooler_h
+          - utility_meter.power_cooler_d
+          - utility_meter.power_cooler_w
+          - utility_meter.power_cooler_m
+        tariff: halfpeak
+
+- alias: 00_power_conter_tarif_night
+  initial_state: true
+  trigger:
+  - platform: time
+    at: '23:00:00'
+  - platform: time
+    at: '00:00:00'
+  action:
+    - service: utility_meter.select_tariff
+      data: 
+        entity_id: 
+          - utility_meter.power_cooler_h
+          - utility_meter.power_cooler_d
+          - utility_meter.power_cooler_w
+          - utility_meter.power_cooler_m
+        tariff: night
+  

@@ -1,0 +1,5 @@
+# Файл "кастрированный" - только для понимания что в каком типе!
+
+sensor: !include_dir_merge_list includes/sensors
+automation: !include_dir_merge_list includes/automation
+utility_meter: !include_dir_merge_named includes/meters

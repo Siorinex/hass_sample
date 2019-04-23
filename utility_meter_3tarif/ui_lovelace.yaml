@@ -1,0 +1,50 @@
+resources:
+  - url: /local/plugins/monster-card.js
+    type: js
+  - url: /local/plugins/vertical-stack-in-card.js
+    type: js
+
+
+title: Main HASS in virt
+name: MyHome
+views:
+
+##################   Power counter
+  - title: Расход электроэнергии 
+    id: powercount
+    icon: mdi:counter
+    cards:
+
+      - type: vertical-stack
+        cards:
+        
+        - type: custom:vertical-stack-in-card
+          cards:
+           - type: markdown
+             content: >
+                 **Куллер**
+           - type: entities
+             show_header_toggle: false
+             entities:
+             - entity: sensor.cooler_power
+               name: Текущее потребление
+             - entity: sensor.power_cooler_m_night
+               name: Потребление в месяц (ночь)
+             - entity: sensor.power_cooler_m_peak
+               name: Потребление в месяц (пик)
+             - entity: sensor.power_cooler_m_halfpeak
+               name: Потребление в месяц (полупик)
+               
+             - entity: sensor.money_month_cooler_night
+               name: Расход в месяц (ночь)
+             - entity: sensor.money_month_cooler_peak
+               name: Расход в месяц (пик)
+             - entity: sensor.money_month_cooler_halfpeak
+               name: Расход в месяц (полупик)
+               
+             - entity: sensor.money_month_cooler_1
+               name: Расход в месяц (1-тариф)
+             - entity: sensor.money_month_cooler_2
+               name: Расход в месяц (2-тариф)
+             - entity: sensor.money_month_cooler_3
+               name: Расход в месяц (3-тфриф)

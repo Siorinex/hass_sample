@@ -1,0 +1,50 @@
+  - platform: template
+    sensors:
+      power_cooler_m_day:
+        friendly_name: "Кулер в месяц (день)"
+        unit_of_measurement: 'kWh'
+        value_template: "{{ ((states('sensor.power_cooler_m_peak') | float) + (states('sensor.power_cooler_m_halfpeak') | float)) }}"
+
+
+      money_month_cooler_night:
+        friendly_name: "Стоимость за текущий месяц (ночь)"
+        unit_of_measurement: 'руб'
+        value_template: "{{ (states('sensor.power_cooler_m_night') | float * 1.37)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+
+      money_month_cooler_peak:
+        friendly_name: "Стоимость за текущий месяц (пик)"
+        unit_of_measurement: 'руб'
+        value_template: "{{ (states('sensor.power_cooler_m_peak') | float * 5.25)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+
+      money_month_cooler_halfpeak:
+        friendly_name: "Стоимость за текущий месяц (полупик)"
+        unit_of_measurement: 'руб'
+        value_template: "{{ (states('sensor.power_cooler_m_halfpeak') | float * 4.37)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+    
+      money_month_cooler_day:
+        friendly_name: "Стоимость за текущий месяц (день)"
+        unit_of_measurement: 'руб'
+        value_template: "{{ (states('sensor.power_cooler_m_day') | float * 5.03)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+    
+      money_month_cooler_1:
+        friendly_name: "Стоимость за текущий месяц (1 тариф)"
+        unit_of_measurement: 'руб'
+        value_template: "{{ ( ( (states('sensor.power_cooler_m_day') | float) + (states('sensor.power_cooler_m_peak') | float) + (states('sensor.power_cooler_m_halfpeak') | float) ) * 4.37)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+    
+      money_month_cooler_2:
+        friendly_name: "Стоимость за текущий месяц (2 тариф)"
+        unit_of_measurement: 'руб'
+        value_template: "{{ ( (states('sensor.money_month_cooler_night') | float) + (states('sensor.money_month_cooler_day') | float) )|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+    
+      money_month_cooler_3:
+        friendly_name: "Стоимость за текущий месяц (3 тариф)"
+        unit_of_measurement: 'руб'
+        value_template: "{{ ( (states('sensor.money_month_cooler_night') | float) + (states('sensor.money_month_cooler_peak') | float) + (states('sensor.money_month_cooler_halfpeak') | float) ) |round(2) }}"
+        icon_template: mdi:square-inc-cash 
+    

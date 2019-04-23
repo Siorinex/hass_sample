@@ -1,0 +1,28 @@
+power_cooler_h:
+  source: sensor.cooler_power_integral
+  cycle: hourly
+  tariffs:
+    - peak
+    - halfpeak
+    - night
+power_cooler_d:
+  source: sensor.cooler_power_integral
+  cycle: daily
+  tariffs:
+    - peak
+    - halfpeak
+    - night
+power_cooler_w:
+  source: sensor.cooler_power_integral
+  cycle: weekly
+  tariffs:
+    - peak
+    - halfpeak
+    - night
+power_cooler_m:
+  source: sensor.cooler_power_integral
+  cycle: monthly
+  tariffs:
+    - peak
+    - halfpeak
+    - night

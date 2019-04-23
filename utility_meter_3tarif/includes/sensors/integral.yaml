@@ -1,0 +1,6 @@
+- platform: integration
+  source: sensor.cooler_power
+  name: cooler_power_integral
+  unit_prefix: k
+  unit_time: h
+  round: 4
